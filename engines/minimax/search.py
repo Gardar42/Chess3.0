@@ -14,7 +14,25 @@ def negamax(board: chess.Board, depth: int, alpha: float, beta: float, ply: int 
         score = evaluate(board)
         return score if board.turn == chess.WHITE else -score
 
+    captures = []
+    quiet = []
     for move in board.legal_moves:
+        if board.is_capture(move):
+            captures.append(move)
+        else:
+            quiet.append(move)
+
+    for move in captures:
+        board.push(move)
+        score = -negamax(board, depth - 1, -beta, -alpha, ply + 1)
+        board.pop()
+
+        if score >= beta:
+            return beta
+        if score > alpha:
+            alpha = score
+
+    for move in quiet:
         board.push(move)
         score = -negamax(board, depth - 1, -beta, -alpha, ply + 1)
         board.pop()
@@ -35,8 +53,6 @@ def best_move(board: chess.Board, depth: int) -> chess.Move | None:
         board.push(move)
         score = -negamax(board, depth - 1, -INF, -alpha)
         board.pop()
-
-        #print(f"{move.uci()}: {score}")
 
         if score > alpha:
             alpha = score
