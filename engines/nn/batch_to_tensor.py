@@ -26,11 +26,11 @@ def fen_batch_to_tensor(fen_batch):
                     tensor[i, r, c, ch] = 1.0
                     c += 1
 
-        #side to move (1 канал)
+        # side to move (1 канал)
         if side == 'w':
             tensor[i, :, :, 12] = 1.0
 
-        #рокировки (4 канала)
+        # рокировки (4 канала)
         if 'K' in castling:
             tensor[i, :, :, 13] = 1.0
         if 'Q' in castling:
@@ -40,7 +40,7 @@ def fen_batch_to_tensor(fen_batch):
         if 'q' in castling:
             tensor[i, :, :, 16] = 1.0
 
-        #en passant (1 канал)
+        # en passant (1 канал)
         if enpassant != '-':
             file = ord(enpassant[0]) - ord('a')
             rank = 8 - int(enpassant[1])
