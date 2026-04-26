@@ -59,7 +59,7 @@ dataset = tf.data.Dataset.from_generator(
         tf.TensorSpec(shape=(256, 8, 8, 18), dtype=tf.float32),
         tf.TensorSpec(shape=(256,), dtype=tf.float32),
     )
-).take(100).prefetch(tf.data.AUTOTUNE)
+)
 
 
 
@@ -67,3 +67,5 @@ model.fit(
     dataset,
     epochs=10
 )
+
+model.save("chess_model.keras")

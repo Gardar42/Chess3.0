@@ -1,4 +1,4 @@
-python-chess
-numpy
-pandas
-tensorflow
+tensorflow==2.10.0
+numpy==1.23.5
+pandas==1.5.3
+python-chess==1.999
