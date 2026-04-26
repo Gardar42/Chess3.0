@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+from batch_to_tensor import fen_batch_to_tensor
 
 PATH = "C:/Chess3/data/chessData.csv"
 
@@ -21,6 +22,7 @@ def batch_generator(csv_path=PATH, batch_size=256, chunk_size=10000):
             eval_buffer.append(normalize_eval(ev))
 
             if len(fen_buffer) == batch_size:
-                yield fen_buffer, np.array(eval_buffer, dtype=np.float32)
+                tensors = fen_batch_to_tensor(fen_buffer)  # передаём список FEN, получаем (256, 8, 8, 18)
+                yield tensors, np.array(eval_buffer, dtype=np.float32)
                 fen_buffer = []
                 eval_buffer = []
