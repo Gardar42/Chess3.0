@@ -67,7 +67,3 @@ def best_move(board: chess.Board, depth: int) -> chess.Move | None:
             best = move
 
     return best
-
-fen = "8/5r2/8/1r6/4N2k/1P6/PKP5/8 w - - 0 1"
-board = chess.Board(fen)
-print(best_move(board, 5))
