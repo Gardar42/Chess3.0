@@ -4,5 +4,6 @@ venv/
 .venv/
 *.pyc
 data/
+stockfish/
 *.bat
 *.keras
