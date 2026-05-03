@@ -1,6 +1,6 @@
 import sys
 import chess
-from engines.minimax.search import best_move
+from search import best_move
 
 DEPTH = 4
 

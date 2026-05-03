@@ -1,5 +1,5 @@
 import chess
-from engines.minimax.evaluator import evaluate
+from evaluator import evaluate
 
 INF = 10000000
 
